@@ -23,9 +23,9 @@ dist: ## Build for Production
 	mkdir -p dist/v2
 	mkdir -p dist/vendor
 	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Copying VENDOR${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
-	cp -avR vendor/. dist/vendor
+	cp -R vendor/. dist/vendor
 	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Copying API${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
-	cp -avR src/. dist/v2
+	cp -R src/. dist/v2
 	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}DONE!${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
 
 php-server: ## Starts PHP-Server

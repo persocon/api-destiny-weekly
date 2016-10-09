@@ -19,10 +19,13 @@ help:
   done
 
 dist: ## Build for Production
-	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Copying images${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
-	mkdir -p dist/
+	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Creating directories${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
+	mkdir -p dist/v2
+	mkdir -p dist/vendor
+	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Copying VENDOR${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
+	cp -R vendor/ dist/vendor/
 	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}Copying API${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
-	cp -R src/ dist/
+	cp -R src/ dist/v2
 	@echo "${CYAN}${CLOUD}${NO_COLOR} ${GREEN}DONE!${NO_COLOR} ${CYAN}${ARROW}${NO_COLOR}"
 
 php-server: ## Starts PHP-Server

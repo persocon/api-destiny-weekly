@@ -9,6 +9,18 @@ $config = [
 
 $app = new \Slim\App();
 
+$app->options('/{routes:.+}', function ($request, $response, $args) {
+    return $response;
+});
+
+$app->add(function ($req, $res, $next) {
+    $response = $next($req, $res);
+    return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+});
+
 
 $app->add(new \Slim\HttpCache\Cache('public', 43200));
 
@@ -112,7 +124,6 @@ function curl_character_list($platform, $membership_id) {
 };
 
 // Define app routes
-
 $app->get('/getCharacterList/{platform}/{username}', function($request, $response, $args){
 		$resWithExpires = $this->cache->withExpires($response, time() + 3600);
 		$platform = $request->getAttribute('platform');

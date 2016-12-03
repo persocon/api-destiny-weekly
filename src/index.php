@@ -558,8 +558,8 @@ $app->get('/nightbot/xur', function ($request, $response, $args) {
     $xurItems = "";
     $items = [];
     $saleItemCategories = array_reverse($getXur->saleItemCategories);
-    for($index = 0, $count = count($saleItemCategories[0]->saleItems); $index < $count; $index++){
-        $item = getItemDetail($saleItemCategories[0]->saleItems[$index]->item->itemHash);
+    for($index = 0, $count = count($saleItemCategories[1]->saleItems); $index < $count; $index++){
+        $item = getItemDetail($saleItemCategories[1]->saleItems[$index]->item->itemHash);
         $xurItems .=  $item->title.", ";
     }
     $bosses = rtrim($xurItems, ", ");
